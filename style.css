@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif
+}
+
+/* Style the search field */
+form.search textarea  {
+  padding: 1px;
+  font-size: 13px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+form.search button {
+  float: left;
+  width: 20%;
+  padding: 8px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.search button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.search::after {
+  content: "";
+  clear: both;
+  display: table;
+  width: 100%;
+}
+
+h1{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding-bottom: 1rem;
+    font: 1rem;
+    padding-top: 1rem;
+    
+}
+
+div.search {
+  
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.container{
+      float: left;
+}
+
+.forecast{
+    margin-left:10rem;
+}
+
+#fiveDay{
+  margin-left:8rem;
+  margin-top: 4rem;
+}
+
+.five-day-container h2 {
+  margin-top: 5rem;
+  margin-right: 0.5rem;
+}
+
+.col-lg-3 {
+font-weight: bold;
+font-size: 1.4rem;
+}
+
+.col-lg-9 {
+font-weight: bold;
+}
