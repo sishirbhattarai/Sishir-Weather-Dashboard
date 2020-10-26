@@ -1,4 +1,4 @@
-var userCityName =  $(this).parent().find("textarea").val();
+var userCityName =  document.getElementById("city-input");
 
     var today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
@@ -6,19 +6,21 @@ var userCityName =  $(this).parent().find("textarea").val();
     let yyyy = today.getFullYear();
     var today = mm + '/' + dd + '/' + yyyy;
     
-    $(".submit").on("click", function(e) {
-        e.preventDefault();
-        if (userCityName.val() === "") {
+    $(".searchBtn").on("click", function(e) {
+        e.preventDefault()
+        if (userCityName === "") {
             alert("You must enter a city");
-            return;
+            
         }
         console.log("clicked button")
-        getWeather(userCityName.val());
+        getWeather();
     });
     
 
-    function getWeather(userCityName) {
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ userCityName + "&appid=" + APIKey;
+    function getWeather() {
+APIKey="bfedd0c93a6a513e8a245897a85a7ed7"
+
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ "Herriman" + "&appid=" + APIKey;
         
         $.ajax({
             url: queryURL,
@@ -31,10 +33,8 @@ var userCityName =  $(this).parent().find("textarea").val();
         
             $(".cityName").text("City Name: " + response.name);    
             $(".temperature").text("Temperature: " + response.main.temp);
-        
-              // Log the queryURL
-             // console.log(queryURL);
-        
-              // Log the resulting object
-             // console.log(response);
-            })};
+            $(".humidity").text("Humidity: " + response.main.humidity);
+            $(".windSpeed").text("Wind Speed: " + response.wind.speed);
+            $(".uvIndex").text("UV Index: " + response.main.temp);
+
+           })};

@@ -5,7 +5,7 @@
 body {
   height: 100%;
   margin: 0;
-  font-family: 'Times New Roman', Times, serif
+  font-family: cursive;
 }
 
 /* Style the search field */
@@ -55,7 +55,6 @@ h1{
 
 div.search {
   
-    font-weight: bold;
     font-size: 1.5rem;
 }
 
@@ -77,11 +76,55 @@ div.search {
   margin-right: 0.5rem;
 }
 
-.col-lg-3 {
+.col-md-3 {
 font-weight: bold;
 font-size: 1.4rem;
 }
 
-.col-lg-9 {
+.col-md-9 {
 font-weight: bold;
 }
+
+button, input {
+  width: 100%;
+  
+}
+
+.temperature{
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+.humidity{
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+.windSpeed{
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+.cityName{
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.currentDate{
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.weatherIcon{
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.uvIndex{
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+
+
+

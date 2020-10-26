@@ -32,38 +32,40 @@
     <h1><strong class="dashboard pb-3"> Weather Dashboard</strong></h1>
     <div class="container">
       <div class="row">
-        <div class="col-lg-3 p-100">
+        <div class="col-md-3 p-100">
           Search for a City:
           <form class="search">
-            <textarea class="text" placeholder="Search.."></textarea>
-            <button type="submit" class="searchBtn"><i class="fa fa-search"></i></button>
+            <input id="city-input" placeholder="Enter City name">
+            <button type="submit" class="searchBtn">
+              <i class="fa fa-search"></i>
+            </button>
           </form>
           <div class="lastSearches">List of Last Searches</div>
         </div>
 
-        <div class="col-lg-9">
+        <div class="col-md-9">
           <div class="forecast">
             <div class="row">
-              <h2 class="cityName">City Name</h2>
+              <h2 class="cityName"></h2>
               <h2 class="currentDate"></h2>
               <img class="weatherIcon" />
             </div>
             <div class="row">
-              <p class="temperature">Temperature:</p>
+              <p class="temperature"></p>
             </div>
             <div class="row">
-              <p class="humidity">Humidity:</p>
+              <p class="humidity"></p>
             </div>
             <div class="row">
-              <p class="windSpeed">Wind Speed:</p>
+              <p class="windSpeed"></p>
             </div>
             <div class="row">
-              <p class="uvIndex">UV Index:</p>
+              <p class="uvIndex"></p>
             </div>
           </div>
 
           <div class="container" id="fiveDay">
-            <h2>5-Day Forecast:</h2>
+            <h2></h2>
             <div class="card-row"></div>
           </div>
         </div>
