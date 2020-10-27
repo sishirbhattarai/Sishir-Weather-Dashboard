@@ -6,6 +6,8 @@ body {
   height: 100%;
   margin: 0;
   font-family: cursive;
+  background-color:lightgrey;
+
 }
 
 /* Style the search field */
@@ -116,8 +118,13 @@ button, input {
 }
 
 .weatherIcon{
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: normal;
+}
+
+img{
+  font-size: 2rem;
+  
 }
 
 .uvIndex{
