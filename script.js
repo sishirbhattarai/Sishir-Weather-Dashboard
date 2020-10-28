@@ -85,13 +85,13 @@ $.ajax({
 $(".uvIndex").text("UV Index: " + response.value);
 
 //Defining the color for UV index
-// if (response.value > 3) {
-//           $(".uvIndex").style.background-color;"red";
-//             }
+if (response.value > 3) {
+          $(".uvIndex").css('background-color', 'red');
+            }
 
-//  else {
-//     $(".uvIndex").style.background-color;"green";
-//             }
+ else {
+     $(".uvIndex").css('background-color', 'lightgreen');
+            }
            })
 
 fivedayforecast()
