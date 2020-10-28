@@ -29,13 +29,17 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1><i class="fas fa-angle-double-left"></i><strong class="dashboard pb-3"> Weather Dashboard</strong>  <i class="fas fa-angle-double-right"></i></h1>
+    <h1>
+      <i class="fas fa-angle-double-left"></i
+      ><strong class="dashboard pb-3"> Weather Dashboard</strong>
+      <i class="fas fa-angle-double-right"></i>
+    </h1>
     <div class="container">
       <div class="row">
-        <div class="col-md-3 p-100">
+        <div class="col-md-3">
           Search for a City:
           <form class="search">
-            <input type="text" id="city-input" placeholder="Enter City name">
+            <input type="text" id="city-input" placeholder="Enter City name" />
             <button type="submit" class="searchBtn">
               <i class="fa fa-search"></i>
             </button>
@@ -65,8 +69,31 @@
           </div>
 
           <div class="container" id="fiveDay">
-            <h2></h2>
-            <div class="card-row"></div>
+            <h3></h3>
+
+            <div class="row">
+              <div class="col-lg-3">
+                <div class="card">
+                  <!-- <div class="date"></div>
+                  <div class = "icons"><span id="temp-icon"></span></div>
+                  <div class="temp"></div> 
+                  <div class="humid"></div>  -->
+                </div>
+              </div>
+
+              <div class="col-lg-3">
+                <div class="card"></div>
+              </div>
+              <div class="col-lg-3">
+                <div class="card"></div>
+              </div>
+              <div class="col-lg-3">
+                <div class="card"></div>
+              </div>
+              <div class="col-lg-3">
+                <div class="card"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

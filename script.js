@@ -8,7 +8,7 @@ var icon =$("<i>")
 var userCityName;
 
 $(".searchBtn").on("click", function(e) {
-        e.preventDefault()
+         e.preventDefault()
 
 userCityName =  $("#city-input").val();
 console.log(userCityName)
@@ -23,8 +23,8 @@ getWeather();
     
 
 function getWeather() {
-
-APIKey="bfedd0c93a6a513e8a245897a85a7ed7"
+   
+APIKey = "bfedd0c93a6a513e8a245897a85a7ed7"
 
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+ userCityName + "&appid=" + APIKey;
         
@@ -35,7 +35,7 @@ $.ajax({
 // We store all of the retrieved data inside of an object called "response"
     .then(function(response) {
 
-    console.log(response)
+    console.log("38", response)
 
  //Converting temperature to farenheit. 
 var tempF = (response.main.temp - 273.15) * 1.80 + 32;
@@ -60,7 +60,7 @@ if (tempF.toFixed(0) < 35) {
 
     $(".cityName").text("City Name: " + response.name +" " + "("+ today +")");    
     $(".temperature").text("Temperature: " + tempF.toFixed(0) + "°F ").append(icon);
-    $(".humidity").text("Humidity: " + response.main.humidity);
+    $(".humidity").text("Humidity: " + response.main.humidity + "%");
     $(".windSpeed").text("Wind Speed: " + response.wind.speed + " " + "mph");
            
            
@@ -70,7 +70,8 @@ var Lat = response.coord.lat
 var Lon = response.coord.lon
 
 console.log(Lat, Lon)
-var queryURL = "http://api.openweathermap.org/data/2.5/uvi?lat="+ Lat + "&lon=" + Lon + "&appid=" + APIKey;
+
+var queryURL = "https://api.openweathermap.org/data/2.5/uvi?lat="+ Lat + "&lon=" + Lon + "&appid=" + APIKey;
         
 $.ajax({
     url: queryURL,
@@ -84,19 +85,41 @@ $.ajax({
 $(".uvIndex").text("UV Index: " + response.value);
 
 //Defining the color for UV index
-if (response.value > 3) {
-          $(".uvIndex").style.background-color;"red";
-            }
+// if (response.value > 3) {
+//           $(".uvIndex").style.background-color;"red";
+//             }
 
- else {
-    $(".uvIndex").style.background-color;"green";
-            }
-          })
+//  else {
+//     $(".uvIndex").style.background-color;"green";
+//             }
+           })
 
-
+fivedayforecast()
 
 ///5 day forecast
+function fivedayforecast() {
+var queryURL = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + userCityName + "&cnt=7&appid=" + APIKey;
+//var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" +  userCityName + "&appid=" + APIKey;
 
-        
+$.ajax({
+    url: queryURL,
+    method: "GET"
+          })
 
+// We store all of the retrieved data inside of an object called "response"
+    .then(function(response) {
+
+    console.log("109", response)
+
+$("h3").text("5 Day Forecast:");
+$(".container").show();
+$(".date").text()
+
+
+
+console.log("good")
+//$(".futureCast").show();
+    })
+
+}
            })};

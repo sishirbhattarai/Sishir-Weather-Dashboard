@@ -6,12 +6,11 @@ body {
   height: 100%;
   margin: 0;
   font-family: cursive;
-  background-color:lightgrey;
-
+  background-color: lightgrey;
 }
 
 /* Style the search field */
-form.search textarea  {
+form.search textarea {
   padding: 1px;
   font-size: 13px;
   border: 1px solid grey;
@@ -25,7 +24,7 @@ form.search button {
   float: left;
   width: 20%;
   padding: 8px;
-  background: #2196F3;
+  background: #2196f3;
   color: white;
   font-size: 17px;
   border: 1px solid grey;
@@ -45,31 +44,29 @@ form.search::after {
   width: 100%;
 }
 
-h1{
-    text-align: center;
-    background-color: black;
-    color: white;
-    padding-bottom: 1rem;
-    font: 1rem;
-    padding-top: 1rem;
-    
+h1 {
+  text-align: center;
+  background-color: black;
+  color: white;
+  padding-bottom: 1rem;
+  font: 1rem;
+  padding-top: 1rem;
 }
 
 div.search {
-  
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
-.container{
-      float: left;
+.container {
+  float: left;
 }
 
-.forecast{
-    margin-left:10rem;
+.forecast {
+  margin-left: 10rem;
 }
 
-#fiveDay{
-  margin-left:8rem;
+#fiveDay {
+  margin-left: 8rem;
   margin-top: 4rem;
 }
 
@@ -79,59 +76,54 @@ div.search {
 }
 
 .col-md-3 {
-font-weight: bold;
-font-size: 1.4rem;
+  font-weight: bold;
+  font-size: 1.4rem;
 }
 
 .col-md-9 {
-font-weight: bold;
+  font-weight: bold;
 }
 
-button, input {
+button,
+input {
   width: 100%;
-  
 }
 
-.temperature{
+.temperature {
   font-size: 1.6rem;
   font-weight: normal;
 }
 
-.humidity{
+.humidity {
   font-size: 1.6rem;
   font-weight: normal;
 }
 
-.windSpeed{
+.windSpeed {
   font-size: 1.6rem;
   font-weight: normal;
 }
 
-.cityName{
+.cityName {
   font-size: 2rem;
   font-weight: normal;
 }
 
-.currentDate{
+.currentDate {
   font-size: 2rem;
   font-weight: normal;
 }
 
-.weatherIcon{
+.weatherIcon {
   font-size: 3rem;
   font-weight: normal;
 }
 
-img{
-  font-size: 2rem;
-  
-}
-
-.uvIndex{
+.uvIndex {
   font-size: 1.6rem;
   font-weight: normal;
 }
 
-
-
-
+h3 {
+  font-weight: bold;
+}
