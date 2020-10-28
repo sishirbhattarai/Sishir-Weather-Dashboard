@@ -42,6 +42,7 @@ form.search::after {
   clear: both;
   display: table;
   width: 100%;
+  
 }
 
 h1 {
@@ -127,3 +128,15 @@ input {
 h3 {
   font-weight: bold;
 }
+
+.card{
+  background-color: rgb(47, 77, 243);
+  color: white;
+  max-width: fit-content;
+}
+
+.col-md-9 {
+  font-weight: lighter; 
+  width: 100%;
+}
+

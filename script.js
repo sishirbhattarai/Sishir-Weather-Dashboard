@@ -1,3 +1,4 @@
+$(document).ready(function() {
 var today = new Date();
 let dd = String(today.getDate()).padStart(2, '0');
 let mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -7,7 +8,18 @@ var today = mm + '/' + dd + '/' + yyyy;
 var icon =$("<i>")
 var userCityName;
 
+init()  
+
+//hiding display of five day focast
+function init() {
+    $("#fiveDay").hide();
+}
+
+//event listener on search button with funtion
+
 $(".searchBtn").on("click", function(e) {
+
+$("#fiveDay").show();
          e.preventDefault()
 
 userCityName =  $("#city-input").val();
@@ -98,8 +110,9 @@ fivedayforecast()
 
 ///5 day forecast
 function fivedayforecast() {
-var queryURL = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + userCityName + "&cnt=7&appid=" + APIKey;
-//var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" +  userCityName + "&appid=" + APIKey;
+  
+
+var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" +  userCityName + "&appid=" + APIKey;
 
 $.ajax({
     url: queryURL,
@@ -108,18 +121,29 @@ $.ajax({
 
 // We store all of the retrieved data inside of an object called "response"
     .then(function(response) {
-
-    console.log("109", response)
+    console.log("125", response)
+var results = response.list;
+//var onlyDate = response.list[i].dt_txt.substr(0,10)
+//var image = $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png")
+//var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
 
 $("h3").text("5 Day Forecast:");
-$(".container").show();
-$(".date").text()
 
+for ( var i = 0; i < results.length; i ++) {
+    var results = response.list;
+    var onlyDate = response.list[i].dt_txt.substr(0,10)
+    var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
+    var image = $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png")
 
+//$("<div>").addClass(".date").text(response.list[5].dt_txt)
+$(".date").text(onlyDate)
+$(".temp").text("Temp:" + tempF.toFixed(0) + "°F ").append(icon)
+$(".humid").text("Humid:" + response.list[i].main.humidity + "%")
 
-console.log("good")
-//$(".futureCast").show();
+}
     })
 
 }
            })};
+
+        })
