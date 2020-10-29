@@ -55,6 +55,7 @@ var image = $("#weatherIcon").attr("src", "http://openweathermap.org/img/w/" + r
        
 //console.log("icon" , response.weather[0].icon)
 
+//creating i div for adding font awesome class
 var icon =$("<i>")
        
 
@@ -113,6 +114,7 @@ function fivedayforecast() {
   
 
 var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" +  userCityName + "&appid=" + APIKey;
+//var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" +  Lat + "&lon=" + Lon + "&exclude=hourly,minutely,alerts&appid=" + APIKey;
 
 $.ajax({
     url: queryURL,
@@ -122,25 +124,51 @@ $.ajax({
 // We store all of the retrieved data inside of an object called "response"
     .then(function(response) {
     console.log("125", response)
-var results = response.list;
-//var onlyDate = response.list[i].dt_txt.substr(0,10)
-//var image = $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png")
-//var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
+var result = response.list;
 
+console.log(result.length)
 $("h3").text("5 Day Forecast:");
 
-for ( var i = 0; i < results.length; i ++) {
-    var results = response.list;
-    var onlyDate = response.list[i].dt_txt.substr(0,10)
+
+for ( var i = 5; i < result.length; i += 8) {
+    var onlyDate = response.list[i].dt_txt.substr(0,10) 
     var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
-    var image = $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png")
+    //var imgDiv = $("<img>", {id: 'icon', src: ''})
+    var image = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[i].weather[0].icon + ".png")
+    var fiveDayDiv = $("<div class='card  mx-auto mb-10 p-3' style='width: max; height: 10rem;'>")
+    var dateDiv = $("<div class='date'>").appendTo(fiveDayDiv)
+    var tempDiv = $("<div class= 'temp'>")
+    var humidDiv = $("<div class='humid'>")
 
-//$("<div>").addClass(".date").text(response.list[5].dt_txt)
-$(".date").text(onlyDate)
-$(".temp").text("Temp:" + tempF.toFixed(0) + "°F ").append(icon)
-$(".humid").text("Humid:" + response.list[i].main.humidity + "%")
+dateDiv.text(onlyDate);
+console.log(onlyDate)
 
+
+console.log( response.list[i].weather[0].icon)
+
+tempDiv.text("Temp: " + tempF.toFixed(0) + "  °F")
+console.log(tempF.toFixed(0))
+
+humidDiv.text("Humid: " + response.list[i].main.humidity + " %")
+console.log(response.list[i].main.humidity)
+
+//$(".temp").text("Temp:" + tempF.toFixed(0) + "°F ")
+// $(".humid").text("Humid:" + response.list[i].main.humidity + "%")
+
+dateDiv.appendTo(fiveDayDiv); // or you can also write it as[ fiveDayDiv.append(dateDiv) ]
+image.appendTo(fiveDayDiv);
+tempDiv.appendTo(fiveDayDiv);
+humidDiv.appendTo(fiveDayDiv);
+$("#fiveDay").append(fiveDayDiv);
+//$("#fiveday").append($("#5day"));
+
+
+
+
+//console logging to check  the list:
+console.log(response.list[i])
 }
+
     })
 
 }
