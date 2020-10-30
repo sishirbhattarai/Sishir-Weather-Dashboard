@@ -6,7 +6,7 @@ body {
   height: 100%;
   margin: 0;
   font-family: cursive;
-  background-color: lightgrey;
+  background-color: lightsalmon;
 }
 
 /* Style the search field */
@@ -130,7 +130,7 @@ h3 {
 }
 
 .card{
-  background-color: rgb(47, 77, 243);
+  background-color: rgb(94, 94, 245);
   color: white;
   max-width: fit-content;
 }
@@ -140,7 +140,8 @@ h3 {
   width: 100%;
 }
 
-h3 {
-  text-align: left;
+
+#cast{
+  float: right;
 }
 

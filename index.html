@@ -35,8 +35,8 @@
       <i class="fas fa-angle-double-right"></i>
     </h1>
     <div class="container">
-      <div class="row">
-        <div class="col-md-3 float-left">
+      <div class="row justify-content-md-center">
+        <div class="col-xl-3">
           Search for a City:
           <form class="search">
             <input type="text" id="city-input" placeholder="Enter City name" />
@@ -47,38 +47,45 @@
           <div class="lastSearches">List of Last Searches</div>
         </div>
 
-        <div class="col-md-9 float-right">
-          <div class="forecast">
-            <div class="row">
-              <h2 class="cityName"></h2>
-              <h2 class="currentDate"></h2>
-              <img id="weatherIcon" src="" />
-            </div>
-            <div class="row">
-              <p class="temperature"><span id="temp-icon"></span></p>
-            </div>
-            <div class="row">
-              <p class="humidity"></p>
-            </div>
-            <div class="row">
-              <p class="windSpeed"></p>
-            </div>
-            <div class="row">
-              <p class="uvIndex"></p>
+        <div class="col-xl-9">
+          <div
+            class="card bg-light text-dark p-2 rem shadow-lg p-3 mb-5 bg-white rounded"
+            id="cast"
+            style="width: 710; height: 19rem"
+          >
+            <div class="forecast">
+              <div class="row">
+                <h2 class="cityName"></h2>
+                <h2 class="currentDate"></h2>
+                <img id="weatherIcon" src="" />
+              </div>
+              <div class="row">
+                <p class="temperature"><span id="temp-icon"></span></p>
+              </div>
+              <div class="row">
+                <p class="humidity"></p>
+              </div>
+              <div class="row">
+                <p class="windSpeed"></p>
+              </div>
+              <div class="row">
+                <p class="uvIndex"></p>
+              </div>
             </div>
           </div>
+          <div class="container">
+            <h3></h3>
 
-          <!-- <div class="container" id="fiveDay"> -->
-          <h3></h3>
-
-          <div class="row" id="fiveDay">
-            <!-- <div class="col-lg-2">
+            <div class="row" id="fiveDay">
+              <!-- <img id="icon" src=""/> -->
+              <!-- <div class="col-lg-2">
                 <div class="card"> -->
-            <!-- <div class="date"></div>
-                  <img id="icon" src=""/>
+              <!-- <div class="date"></div>
+                 
                   <div class="temp"></div> 
                   <div class="humid"></div>  -->
-            <!-- </div> -->
+              <!-- </div> -->
+            </div>
           </div>
         </div>
       </div>
