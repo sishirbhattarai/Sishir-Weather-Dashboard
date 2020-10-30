@@ -7,20 +7,41 @@ $(document).ready(function () {
 
   var icon = $("<i>");
   var userCityName;
-
+  var oldSearches = JSON.parse(localStorage.getItem("usersearches")) || []
   init();
+
+  function generateButtons() {
+
+    $(".lastSearches").empty()
+
+      oldSearches.forEach(function(userCityName){
+        var buttonEl = $("<button>")
+        buttonEl.text(userCityName)
+
+     buttonEl.on("click", function(){
+        $("#fiveDay").show();
+        
+        getWeather()
+     }) 
+     $(".lastSearches").append(buttonEl) 
+    })
+   
+  }
+
+
 
   //hiding display of five day focast
   function init() {
-    $("#cast").hide();
+   $("#cast").hide();
     $("#fiveDay").hide();
+    generateButtons()
   }
 
   //event listener on search button with funtion
 
   $(".searchBtn").on("click", function (e) {
-    $("#cast").show();
-    $("#fiveDay").show();
+   $("#cast").show();
+   $("#fiveDay").show();
     e.preventDefault();
 
     userCityName = $("#city-input").val();
@@ -48,6 +69,16 @@ $(document).ready(function () {
     })
       // We store all of the retrieved data inside of an object called "response"
       .then(function (response) {
+
+    //pushing user entered city name to var oldSearches.
+        oldSearches.push(userCityName)
+
+    //strigifying the objects on var oldSearches.
+        localStorage.setItem("oldSearches", JSON.stringify(oldSearches))
+    
+    //running generate button function
+        generateButtons()
+
         console.log("38", response);
 
         //Converting temperature to farenheit.
