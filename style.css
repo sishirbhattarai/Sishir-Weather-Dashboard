@@ -133,6 +133,7 @@ h3 {
   background-color: rgb(94, 94, 245);
   color: white;
   max-width: fit-content;
+  display: grid;
 }
 
 .col-md-9 {
