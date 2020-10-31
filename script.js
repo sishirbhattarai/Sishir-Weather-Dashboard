@@ -6,27 +6,34 @@ $(document).ready(function () {
   var today = mm + "/" + dd + "/" + yyyy;
 
   var icon = $("<i>");
-  var userCityName;
+//  var userCityName = $("#city-input").val();
   var oldSearches = JSON.parse(localStorage.getItem("usersearches")) || []
   init();
 
   function generateButtons() {
-
-    $(".lastSearches").empty()
+   
+    $("#lastSearches").empty()
 
       oldSearches.forEach(function(userCityName){
-        var buttonEl = $("<button>")
-        buttonEl.text(userCityName)
+        var buttonEl = $("<button>").text(userCityName)
 
-     buttonEl.on("click", function(){
-        $("#fiveDay").show();
-        
-        getWeather()
-     }) 
-     $(".lastSearches").append(buttonEl) 
+        console.log(buttonEl)
+    
+     $("#lastSearches").append(buttonEl) 
     })
-   
+
   }
+
+  $("#lastSearches").on("click", "button", function(){
+    $("#fiveDay").show();
+
+    console.log($(this).text())
+
+getWeather($(this).text())
+ 
+    
+ }) 
+ 
 
 
 
@@ -34,7 +41,7 @@ $(document).ready(function () {
   function init() {
    $("#cast").hide();
     $("#fiveDay").hide();
-    generateButtons()
+    //generateButtons()
   }
 
   //event listener on search button with funtion
@@ -44,17 +51,17 @@ $(document).ready(function () {
    $("#fiveDay").show();
     e.preventDefault();
 
-    userCityName = $("#city-input").val();
-    console.log(userCityName);
+   var userCityName = $("#city-input").val();
+   // console.log(userCityName);
 
     if (userCityName === "") {
       alert("You must enter a city");
     }
     console.log("clicked button");
-    getWeather();
+    getWeather(userCityName);
   });
 
-  function getWeather() {
+  function getWeather(userCityName) {
     APIKey = "bfedd0c93a6a513e8a245897a85a7ed7";
 
     var queryURL =
@@ -74,12 +81,12 @@ $(document).ready(function () {
         oldSearches.push(userCityName)
 
     //strigifying the objects on var oldSearches.
-        localStorage.setItem("oldSearches", JSON.stringify(oldSearches))
+        localStorage.setItem("usersearches", JSON.stringify(oldSearches))
     
     //running generate button function
-        generateButtons()
+       generateButtons() 
 
-        console.log("38", response);
+      //  console.log("38", response);
 
         //Converting temperature to farenheit.
         var tempF = (response.main.temp - 273.15) * 1.8 + 32;
@@ -117,7 +124,7 @@ $(document).ready(function () {
         var Lat = response.coord.lat;
         var Lon = response.coord.lon;
 
-        console.log(Lat, Lon);
+       // console.log(Lat, Lon);
 
         var queryURL =
           "https://api.openweathermap.org/data/2.5/uvi?lat=" +
@@ -131,7 +138,7 @@ $(document).ready(function () {
           url: queryURL,
           method: "GET",
         }).then(function (response) {
-          console.log(response);
+       //   console.log(response);
 
           //Getting UV index value from above response
           $(".uvIndex").text("UV Index: " + response.value);
@@ -165,7 +172,7 @@ $(document).ready(function () {
               console.log("125", response);
               var result = response.list;
 
-              console.log(result.length);
+      //        console.log(result.length);
               $("h3").text("5 Day Forecast:");
              
         $("#fiveDay").empty()
@@ -187,17 +194,17 @@ $(document).ready(function () {
                 var humidDiv = $("<div class='humid'>");
 
                 dateDiv.text(onlyDate);
-                console.log(onlyDate);
+       //         console.log(onlyDate);
 
                 console.log(response.list[i].weather[0].icon);
 
                 tempDiv.text("Temp: " + tempF.toFixed(0) + "  °F");
-                console.log(tempF.toFixed(0));
+        //        console.log(tempF.toFixed(0));
 
                 humidDiv.text(
                   "Humid: " + response.list[i].main.humidity + " %"
                 );
-                console.log(response.list[i].main.humidity);
+         //       console.log(response.list[i].main.humidity);
 
                 //$(".temp").text("Temp:" + tempF.toFixed(0) + "°F ")
                 // $(".humid").text("Humid:" + response.list[i].main.humidity + "%")
@@ -210,7 +217,7 @@ $(document).ready(function () {
                 $("#fiveday").appendTo($(".container"));
 
                 //console logging to check  the list:
-                console.log(response.list[i]);
+           //     console.log(response.list[i]);
               }
             });
         }
