@@ -7,6 +7,7 @@ body {
   margin: 0;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   background-color:white;
+  font-size: 1.1rem;
 }
 
 /* Style the search field */
@@ -144,5 +145,13 @@ h3 {
 
 #cast{
   float: right;
+}
+
+#clearHistory {
+  color:white;
+  background-color: brown;
+  margin-top: 5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
 }
 

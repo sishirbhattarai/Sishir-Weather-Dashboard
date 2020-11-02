@@ -6,12 +6,22 @@ $(document).ready(function () {
   var today = mm + "/" + dd + "/" + yyyy;
 
   var icon = $("<i>");
+  var userCityName;
 //  var userCityName = $("#city-input").val();
   var oldSearches = JSON.parse(localStorage.getItem("usersearches")) || []
   init();
+  
+  $("#clearHistory").on("click", function() {
+    console.log("15")
 
-  function generateButtons() {
+   $("#lastSearches").empty()
+    window.localStorage.clear();
+  
+  });
+
+  function generateSearchButtons() {
    
+  // window.localStorage.empty()
     $("#lastSearches").empty()
 
       oldSearches.forEach(function(userCityName){
@@ -26,22 +36,20 @@ $(document).ready(function () {
 
   $("#lastSearches").on("click", "button", function(){
     $("#fiveDay").show();
-
-    console.log($(this).text())
+    $("#cast").show();
 
 getWeather($(this).text())
- 
+
     
  }) 
  
-
 
 
   //hiding display of five day focast
   function init() {
    $("#cast").hide();
     $("#fiveDay").hide();
-    //generateButtons()
+    //generateSearchButtons()
   }
 
   //event listener on search button with funtion
@@ -51,7 +59,7 @@ getWeather($(this).text())
    $("#fiveDay").show();
     e.preventDefault();
 
-   var userCityName = $("#city-input").val();
+   userCityName = $("#city-input").val();
    // console.log(userCityName);
 
     if (userCityName === "") {
@@ -82,9 +90,10 @@ getWeather($(this).text())
 
     //strigifying the objects on var oldSearches.
         localStorage.setItem("usersearches", JSON.stringify(oldSearches))
-    
+        
+        
     //running generate button function
-       generateButtons() 
+        generateSearchButtons() 
 
       //  console.log("38", response);
 
