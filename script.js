@@ -27,13 +27,14 @@ $(document).ready(function () {
     $("#lastSearches").empty()
 console.log(oldSearches)
       oldSearches.forEach(function(userCityName){
-      if(!oldSearches.includes(userCityName)) {
+        
+      // if(!oldSearches.includes(userCityName)) {
         var buttonEl = $("<button>").text(userCityName)
 
         console.log(buttonEl)
     
      $("#lastSearches").append(buttonEl) 
-    }
+    
   
   })
 }
