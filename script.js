@@ -9,30 +9,34 @@ $(document).ready(function () {
   var userCityName;
 //  var userCityName = $("#city-input").val();
   var oldSearches = JSON.parse(localStorage.getItem("usersearches")) || []
-  init();
-  
-  $("#clearHistory").on("click", function() {
-    console.log("15")
 
+  init();
+
+// clearing History and buttons upon clicking clear history
+  $("#clearHistory").on("click", function() {
+   
    $("#lastSearches").empty()
-    window.localStorage.clear();
+   oldSearches = []
+   window.localStorage.clear();
   
   });
 
   function generateSearchButtons() {
    
-  // window.localStorage.empty()
+// window.localStorage.empty()
     $("#lastSearches").empty()
-
+console.log(oldSearches)
       oldSearches.forEach(function(userCityName){
+      if(!oldSearches.includes(userCityName)) {
         var buttonEl = $("<button>").text(userCityName)
 
         console.log(buttonEl)
     
      $("#lastSearches").append(buttonEl) 
-    })
-
-  }
+    }
+  
+  })
+}
 
   $("#lastSearches").on("click", "button", function(){
     $("#fiveDay").show();
@@ -57,15 +61,16 @@ getWeather($(this).text())
   $(".searchBtn").on("click", function (e) {
    $("#cast").show();
    $("#fiveDay").show();
-    e.preventDefault();
+   e.preventDefault();
 
    userCityName = $("#city-input").val();
    // console.log(userCityName);
 
     if (userCityName === "") {
       alert("You must enter a city");
+      return;
     }
-    console.log("clicked button");
+    
     getWeather(userCityName);
   });
 
@@ -181,7 +186,7 @@ getWeather($(this).text())
               console.log("125", response);
               var result = response.list;
 
-      //        console.log(result.length);
+             console.log(result.length);
               $("h3").text("5 Day Forecast:");
              
         $("#fiveDay").empty()
