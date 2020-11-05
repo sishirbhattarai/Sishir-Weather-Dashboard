@@ -4,7 +4,7 @@
 
 Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.
 
-![weather dashboard](./images/weather1.PNG)
+![weather dashboard](.assets/images/weather1.PNG)
 
 ## User Story
 
