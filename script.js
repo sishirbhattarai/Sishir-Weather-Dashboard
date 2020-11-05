@@ -7,52 +7,45 @@ $(document).ready(function () {
 
   var icon = $("<i>");
   var userCityName;
-//  var userCityName = $("#city-input").val();
-  var oldSearches = JSON.parse(localStorage.getItem("usersearches")) || []
+  
+  var oldSearches = JSON.parse(localStorage.getItem("usersearches")) || [];
 
   init();
 
-// clearing History and buttons upon clicking clear history
-  $("#clearHistory").on("click", function() {
-   
-   $("#lastSearches").empty()
-   oldSearches = []
-   window.localStorage.clear();
-  
+  // clearing History and buttons upon clicking clear history
+  $("#clearHistory").on("click", function () {
+    $("#lastSearches").empty();
+    oldSearches = [];
+    window.localStorage.clear();
   });
 
   function generateSearchButtons() {
-   
-// window.localStorage.empty()
-    $("#lastSearches").empty()
-console.log(oldSearches)
-      oldSearches.forEach(function(userCityName){
-        
-      // if(!oldSearches.includes(userCityName)) {
-        var buttonEl = $("<button>").text(userCityName)
+    
+    $("#lastSearches").empty();
+    console.log(oldSearches);
+    oldSearches.forEach(function (userCityName) {
+      
+        console.log("29", userCityName)
+      var buttonEl = $("<button>").text(userCityName);
 
-        console.log(buttonEl)
-    
-     $("#lastSearches").append(buttonEl) 
-    
+      console.log("33",buttonEl);
+
+      $("#lastSearches").append(buttonEl);
+    })
   
-  })
-}
+  }
 
-  $("#lastSearches").on("click", "button", function(){
+  $("#lastSearches").on("click", "button", function () {
     $("#fiveDay").show();
     $("#cast").show();
 
-getWeather($(this).text())
-
+    getWeather($(this).text());
     
- }) 
- 
-
+  });
 
   //hiding display of five day focast
   function init() {
-   $("#cast").hide();
+    $("#cast").hide();
     $("#fiveDay").hide();
     //generateSearchButtons()
   }
@@ -60,18 +53,19 @@ getWeather($(this).text())
   //event listener on search button with funtion
 
   $(".searchBtn").on("click", function (e) {
-   $("#cast").show();
-   $("#fiveDay").show();
-   e.preventDefault();
+    e.preventDefault();
+    $("#cast").show();
+    $("#fiveDay").show();
+    
 
-   userCityName = $("#city-input").val();
-   // console.log(userCityName);
+ userCityName = $("#city-input").val();
+    console.log("59", userCityName);
 
     if (userCityName === "") {
       alert("You must enter a city");
       return;
     }
-    
+
     getWeather(userCityName);
   });
 
@@ -91,17 +85,19 @@ getWeather($(this).text())
       // We store all of the retrieved data inside of an object called "response"
       .then(function (response) {
 
-    //pushing user entered city name to var oldSearches.
-        oldSearches.push(userCityName)
+        //pushing user entered city name to var oldSearches.
+        //also, not pushing city that is already on the oldsearches variable
+        if(!oldSearches.includes(userCityName)) {
+        oldSearches.push(userCityName);
 
-    //strigifying the objects on var oldSearches.
-        localStorage.setItem("usersearches", JSON.stringify(oldSearches))
-        
-        
-    //running generate button function
-        generateSearchButtons() 
+        //strigifying the objects on var oldSearches.
+        localStorage.setItem("usersearches", JSON.stringify(oldSearches));
+        }
+ 
+        //running generate button function
+        generateSearchButtons();
 
-      //  console.log("38", response);
+        //  console.log("38", response);
 
         //Converting temperature to farenheit.
         var tempF = (response.main.temp - 273.15) * 1.8 + 32;
@@ -139,7 +135,7 @@ getWeather($(this).text())
         var Lat = response.coord.lat;
         var Lon = response.coord.lon;
 
-       // console.log(Lat, Lon);
+        // console.log(Lat, Lon);
 
         var queryURL =
           "https://api.openweathermap.org/data/2.5/uvi?lat=" +
@@ -153,7 +149,7 @@ getWeather($(this).text())
           url: queryURL,
           method: "GET",
         }).then(function (response) {
-       //   console.log(response);
+          //   console.log(response);
 
           //Getting UV index value from above response
           $(".uvIndex").text("UV Index: " + response.value);
@@ -187,10 +183,10 @@ getWeather($(this).text())
               console.log("125", response);
               var result = response.list;
 
-             console.log(result.length);
+              console.log(result.length);
               $("h3").text("5 Day Forecast:");
-             
-        $("#fiveDay").empty()
+
+              $("#fiveDay").empty();
               for (var i = 5; i < result.length; i += 8) {
                 var onlyDate = response.list[i].dt_txt.substr(0, 10);
                 var tempF = (response.list[i].main.temp - 273.15) * 1.8 + 32;
@@ -209,17 +205,17 @@ getWeather($(this).text())
                 var humidDiv = $("<div class='humid'>");
 
                 dateDiv.text(onlyDate);
-       //         console.log(onlyDate);
+                //         console.log(onlyDate);
 
                 console.log(response.list[i].weather[0].icon);
 
                 tempDiv.text("Temp: " + tempF.toFixed(0) + "  °F");
-        //        console.log(tempF.toFixed(0));
+                //        console.log(tempF.toFixed(0));
 
                 humidDiv.text(
                   "Humid: " + response.list[i].main.humidity + " %"
                 );
-         //       console.log(response.list[i].main.humidity);
+                //       console.log(response.list[i].main.humidity);
 
                 //$(".temp").text("Temp:" + tempF.toFixed(0) + "°F ")
                 // $(".humid").text("Humid:" + response.list[i].main.humidity + "%")
@@ -232,7 +228,7 @@ getWeather($(this).text())
                 $("#fiveday").appendTo($(".container"));
 
                 //console logging to check  the list:
-           //     console.log(response.list[i]);
+                //     console.log(response.list[i]);
               }
             });
         }
