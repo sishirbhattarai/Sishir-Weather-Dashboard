@@ -70,8 +70,10 @@ $(document).ready(function () {
   });
 
   function getWeather(userCityName) {
-    APIKey = "bfedd0c93a6a513e8a245897a85a7ed7";
+    //APIKey = "bfedd0c93a6a513e8a245897a85a7ed7";
 
+     // APIKey = "014a6064e56d6444e7a1ccaa902022be";
+      APIKey = "ed8e33559f52e201dea31fba06f27ebc";
     var queryURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       userCityName +
