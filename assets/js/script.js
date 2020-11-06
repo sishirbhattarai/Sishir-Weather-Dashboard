@@ -47,7 +47,7 @@ $(document).ready(function () {
   function init() {
     $("#cast").hide();
     $("#fiveDay").hide();
-    //generateSearchButtons()
+    generateSearchButtons()
   }
 
   //event listener on search button with funtion
