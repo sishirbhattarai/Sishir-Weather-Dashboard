@@ -1,9 +1,12 @@
 # Live Deployed Site: 
   https://sishirbhattarai.github.io/Sishir-Weather-Dashboard/
 
-# Criteria: Using the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.
+# Technology Used: 
+HTML, CSS jquery, API
 
-![weather dashboard](./assets/images/weather1.PNG)
+# Criteria: 
+
+Using the [OpenWeather API](https://openweathermap.org/api) retrieve weather data for cities. Use `localStorage` to store any persistent data.
 
 ## User Story
 
@@ -13,7 +16,7 @@ I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 ```
 
-## Test
+## Criteria
 
 ```
 GIVEN a weather dashboard with form inputs
@@ -30,9 +33,7 @@ THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 ```
-
-The following image demonstrates the application functionality:
-
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
-
+ # Test:
+ 
+ ![weather dashboard](./assets/images/weather1.PNG)
 
