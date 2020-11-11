@@ -36,4 +36,9 @@ THEN I am presented with the last searched city forecast
  # Test:
  
  ![weather dashboard](./assets/images/weather1.PNG)
+ 
+ # Contact:
+ 
+ Name: Sishir Bhattarai
+ Email: sishir.bhattarai@outlook.com
 
