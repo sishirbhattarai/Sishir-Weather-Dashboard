@@ -1,8 +1,7 @@
-# 06 Server-Side APIs: Weather Dashboard
-
+# Live Deployed Site: 
   https://sishirbhattarai.github.io/Sishir-Weather-Dashboard/
 
-Use the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.
+# Criteria: Using the [OpenWeather API](https://openweathermap.org/api) to retrieve weather data for cities. The documentation includes a section called "How to start" that will provide basic setup and usage instructions. Use `localStorage` to store any persistent data.
 
 ![weather dashboard](./assets/images/weather1.PNG)
 
@@ -14,7 +13,7 @@ I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 ```
 
-## Acceptance Criteria
+## Test
 
 ```
 GIVEN a weather dashboard with form inputs
